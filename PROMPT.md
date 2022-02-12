@@ -21,7 +21,7 @@ We want to see your skills in action, including your ability to to use Git + Git
     - Some sort of app that touches on the requirements in the tech listed above (more details on our [job posting](https://angel.co/l/2wyRDy))
     - **Creativity and passion!** We're _tired_ of looking at resumes... tell us something about you and/or why you want to work with us
     - Commit OFTEN... if we see a single commit with everything, we'll be weirded out 🤔
-    - Include your resume in the repo (PDFs only please, it's 2022)
+    - Include your resume in the repo (PDFs only please, it's 2022); the nerds on our team don't want it but the rest of our team does.
     - Need help? Check out [our examples](#example-prompts), [Tips](#tips), or [start a discussion to get help](https://github.com/Pantheon-Labs/Careers-SE1/discussions/new?category=get-help)!
 1. Make a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to this repo
 
