@@ -35,7 +35,7 @@ We don't _officially_ have any bonus points to award, but we'll certainly be pre
 - Make things pretty 🔥
     - React: Use Chakra and style your components/content well (show your gf/bf/mom/dad/dog/cat and see if they're impressed)
     - Node: Follow appropriate REST standards, use query/body data appropriately, use appropriate http status codes
-    - `README`: Good markdown is an form of art...
+    - `README`: Good markdown is a form of art...
 - Add Linting/Test Coverage/CICD/etc. to your app
 - Make us laugh while reviewing
 - Help us better understand who YOU are
