@@ -54,6 +54,6 @@ We don't _officially_ have any bonus points to award, but we'll certainly be pre
 - Don't worry about about comments in your code; good code should be readable
 - **Don't stress; just submit SOMETHING and let's have a conversation** 🙂
 
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 <sub>Still reading? You get another one of those officially unofficial bonus points! ❤️ Just include `piña colada` somewhere in your app.</sub>
