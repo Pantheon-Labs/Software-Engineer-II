@@ -2,5 +2,10 @@
 
 If you're looking for a job, head on over to [PROMPT.md](./PROMPT.md).
 
-# [Your App Name Here]
+
+</br></br></br></br>
+
+<!-- Delete this line and everything above it -->
+
+# `Your App Name Here`
 Add some pretty documentation here that tells us how to start your app so we can see the awesome thing you built!
