@@ -1,6 +1,6 @@
-# Pantheon Labs - Software Engineer I
+# Pantheon Labs - Software Engineer II
 
-Hey there 👋 We're Pantheon Labs and we're looking for someone to join our family as a `Software Engineer I`.
+Hey there 👋 We're Pantheon Labs and we're looking for someone to join our family as a `Software Engineer II`.
 
 Here are the high-level details:
 - **PAY**: $120k-$140k
