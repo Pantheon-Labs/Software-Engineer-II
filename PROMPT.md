@@ -10,6 +10,7 @@ Here are the high-level details:
 
 Want the full details and requirements? See our job posting on [Angel.co](https://angel.co/l/2wyRAn).
 
+---
 
 # Want an interview?
 Applying on Angel.co is a great way to get on our radar, but if you **_really_** want to impress us, we have an opportunity for you...
@@ -30,7 +31,10 @@ Once we get your PR, we'll take a look and reach out via the info on your resume
 
 We're looking forward to seeing what you build 💙
 
-😰 Overwhelmed? Take a look at [the prompt for our SEI position](https://github.com/Pantheon-Labs/Software-Engineer-I/blob/main/PROMPT.md#pantheon-labs---software-engineer-i) and see if that's a better fit!
+## 😰 Overwhelmed?
+Take a look at [the prompt for our SEI position](https://github.com/Pantheon-Labs/Software-Engineer-I/blob/main/PROMPT.md#pantheon-labs---software-engineer-i) and see if that's a better fit!
+
+---
 
 # Bonus Points
 We don't _officially_ have any bonus points to award, but we'll certainly be pretty dang excited if you do any of the following:
