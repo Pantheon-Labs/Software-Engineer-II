@@ -3,12 +3,12 @@
 Hey there 👋 We're Pantheon Labs and we're looking for someone to join our family as a `Software Engineer I`.
 
 Here are the high-level details:
-- **PAY**: $90k-$110k
+- **PAY**: $120k-$140k
 - **BENEFITS**: We have awesome benefits!
 - **LOCATION**: Slack + Your desk/couch/car/boat/horse - ✨ **totally remote** ✨
 - **TECH**: TypeScript, React (Next.js, Chakra), Node (Express), GitHub (hosting and Actions), PostgreSQL, Heroku
 
-Want the full details and requirements? See our job posting on [Angel.co](https://angel.co/l/2wyRDy).
+Want the full details and requirements? See our job posting on [Angel.co](https://angel.co/l/2wyRAn).
 
 
 # Want an interview?
@@ -18,7 +18,8 @@ We want to see your skills in action, including your ability to to use Git + Git
 1. [Fork this repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 1. Make something awesome! This is super open-ended because we want you to get creative. At a minimum, here's what we expect:
     - A `README` with good documentation so we know how to run your code
-    - Some sort of app that touches on the requirements in the tech listed above (more details on our [job posting](https://angel.co/l/2wyRDy))
+    - Some sort of TypeScript React and/or Node app that touches on the requirements in the tech listed above (more details on our [job posting](https://angel.co/l/2wyRAn))
+    - Utilization of at least one API ([here's a good list](https://github.com/public-apis/public-apis) of free APIs if you need a suggestion!)
     - **Creativity and passion!** We're _tired_ of looking at resumes... tell us something about you and/or why you want to work with us
     - Commit OFTEN... if we see a single commit with everything, we'll be weirded out 🤔
     - Include your resume in the repo (PDFs only please, it's 2022); the nerds on our team don't want it but the rest of our team does.
@@ -31,7 +32,7 @@ We're looking forward to seeing what you build 💙
 
 # Bonus Points
 We don't _officially_ have any bonus points to award, but we'll certainly be pretty dang excited if you do any of the following:
-- Use TypeScript instead of JavaScript (if you don't know TS but do know JS, we can help you learn 😉)
+- Add a PostgreSQL database to your app
 - Make things pretty 🔥
     - React: Use Chakra and style your components/content well (show your gf/bf/mom/dad/dog/cat and see if they're impressed)
     - Node: Follow appropriate REST standards, use query/body data appropriately, use appropriate http status codes
@@ -43,7 +44,7 @@ We don't _officially_ have any bonus points to award, but we'll certainly be pre
 
 # Example Prompts
 - **Reddit Client**: Make a React app that pulls Reddit posts from the [Reddit API](https://www.reddit.com/dev/api/)
-- **GitHub Client**: Build a React app that uses the API to retrieve and display interesting information
+- **GitHub Client**: Build a React app that uses the [GitHub API](https://docs.github.com/en/rest) to retrieve and display interesting information
 - **Hire Me Site**: Build a React app that tells us about you, your strengths, your passions, and why you want to join us!
 - **Pantheon Labs Site**: Create a website for Pantheon Labs
 - **Food/Drink Recommendation API**: Create an API that allows users to fetch recommendations for food/drinks based on location, weather, or something else!
