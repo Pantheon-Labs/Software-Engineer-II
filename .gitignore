@@ -8,6 +8,11 @@ client/.pnp
 # testing
 client/coverage
 
+# env
+client/.env
+server/.env
+
+
 # production
 client/build
 
