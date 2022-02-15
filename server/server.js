@@ -1,5 +1,9 @@
 const express = require("express");
 const server = express();
+
+const cors = require("cors");
+server.use(cors());
+
 const PORT = 4000;
 
 const catFactsRoute = require("./routes/catFacts");
