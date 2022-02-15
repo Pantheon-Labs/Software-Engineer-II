@@ -91,22 +91,6 @@ export const Index = () => {
                   />
                </AspectRatio>
                <Box p="6">
-                  <Box display="flex" alignItems="baseline">
-                     {/* <Badge borderRadius="full" px="2" colorScheme="teal">
-                     New
-                  </Badge> */}
-                     {/* <Box
-                     color="gray.500"
-                     fontWeight="semibold"
-                     letterSpacing="wide"
-                     fontSize="xs"
-                     textTransform="uppercase"
-                     ml="2"
-                  >
-                     {property.beds} beds &bull; {property.baths} baths
-                  </Box> */}
-                  </Box>
-
                   <Table variant="striped" colorScheme="teal">
                      <Tbody>
                         <Tr>

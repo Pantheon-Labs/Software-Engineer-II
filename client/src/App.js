@@ -1,14 +1,12 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { Index as CatFacts } from "./Components/catFacts/Index";
-import { Index as DogFacts } from "./Components/dogFacts/Index";
 import { Index as PokeDex } from "./Components/pokeDex/Index";
+import { Index as ChooseFacts } from "./Components/chooseFacts/Index";
 
 function App() {
    return (
       <ChakraProvider>
-         <CatFacts />
-         <DogFacts />
          <PokeDex />
+         <ChooseFacts />
       </ChakraProvider>
    );
 }

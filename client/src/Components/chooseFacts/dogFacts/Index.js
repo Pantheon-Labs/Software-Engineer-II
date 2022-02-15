@@ -23,7 +23,7 @@ export const Index = () => {
    }, []);
    return (
       <div>
-         <h1>{dogFact}</h1>
+         <div>{dogFact}</div>
       </div>
    );
 };
