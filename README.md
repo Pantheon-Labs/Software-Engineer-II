@@ -1,4 +1,4 @@
-# `POKEDEX`
+# `POKEDEX PICKER`
 
 ## Description
 Allows the user to scroll through Pokemons either one-by-one or selecting from a list in order to gather or remove favorites. The technologies used to achieve this were React for reusable components, Chakra-UI for styles, Node.js and Express.js to implement and use APIs, and postgreSQL to store favorites inside a database.
