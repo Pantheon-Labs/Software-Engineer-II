@@ -10,8 +10,6 @@ const Search = (props) => {
       setOffSet(parseInt(e.currentTarget.id));
    };
 
-   console.log(offSet);
-
    useEffect(() => {
       const searchPokeDex = async () => {
          try {

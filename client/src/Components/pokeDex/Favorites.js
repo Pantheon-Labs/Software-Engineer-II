@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@chakra-ui/react";
 
-export const Favorites = ({ name }) => {
+export const Favorites = (props) => {
+   const { name, addFavorite } = props;
    const handleFavorite = (e) => {
       const postPokiDexFavorite = async () => {
          try {
@@ -10,6 +11,7 @@ export const Favorites = ({ name }) => {
                .post(`http://localhost:4000/pokeDexFavorites?name=${name}`)
                .then((response) => {
                   console.log(response);
+                  addFavorite = !addFavorite;
                })
                .catch((error) => {
                   console.log(error);
