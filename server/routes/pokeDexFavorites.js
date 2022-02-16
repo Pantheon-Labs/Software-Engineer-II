@@ -28,4 +28,15 @@ router.get("/", async (req, res) => {
    }
 });
 
+router.delete("/", async (req, res) => {
+   try {
+      const deleteFavorite = await pool.query(
+         `DELETE FROM ${process.env.TABLE_NAME} WHERE favorites_id = $1`,
+         [req.query.id]
+      );
+   } catch (e) {
+      console.log(e);
+   }
+});
+
 module.exports = router;

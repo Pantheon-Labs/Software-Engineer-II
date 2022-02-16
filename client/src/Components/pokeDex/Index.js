@@ -9,6 +9,7 @@ import {
    Button,
    ButtonGroup,
    Center,
+   Heading,
    IconButton,
    Image,
    Table,
@@ -22,7 +23,8 @@ import {
    VStack,
 } from "@chakra-ui/react";
 
-export const Index = () => {
+export const Index = (props) => {
+   const { offSet, setOffSet } = props;
    const [pokeDex, setPokeDex] = useState({
       image: null,
       name: "",
@@ -30,8 +32,8 @@ export const Index = () => {
       height: 0,
       base_experience: 0,
       abilities: [],
+      types: [],
    });
-   const [offSet, setOffSet] = useState(1);
 
    const handleOffSet = (e) => {
       setTimeout(() => {
@@ -49,7 +51,6 @@ export const Index = () => {
             const request = await axios
                .get(`http://localhost:4000/pokeDex?offset=${offSet}`)
                .then((response) => {
-                  console.log(response);
                   const {
                      name,
                      weight,
@@ -57,7 +58,9 @@ export const Index = () => {
                      height,
                      base_experience,
                      abilities,
+                     types,
                   } = response.data;
+                  console.log(response.data);
                   setPokeDex({
                      image: sprites.front_default,
                      name: name,
@@ -65,6 +68,7 @@ export const Index = () => {
                      height: height,
                      base_experience: base_experience,
                      abilities: abilities,
+                     types: types,
                   });
                })
                .catch((error) => {
@@ -79,7 +83,10 @@ export const Index = () => {
 
    return (
       <div>
-         <Box>
+         <Box display="flex" flexDirection="column">
+            <Center>
+               <Heading>{pokeDex.name.toUpperCase()}</Heading>
+            </Center>
             <AspectRatio maxW="100%" ratio={4 / 3}>
                <Image
                   objectFit="cover"
@@ -87,25 +94,18 @@ export const Index = () => {
                   alt={pokeDex.name}
                />
             </AspectRatio>
-            <Box p="6">
+            <Box>
+               {pokeDex.types.map((i, index) => (
+                  <Badge
+                     mr="2"
+                     mb="2"
+                     variant={index % 2 ? "outline" : "solid"}
+                  >
+                     {i.type.name}
+                  </Badge>
+               ))}
                <Table variant="striped" colorScheme="teal">
                   <Tbody>
-                     <Tr>
-                        <Td>Name</Td>
-                        <Td>{pokeDex.name.toUpperCase()}</Td>
-                     </Tr>
-                     <Tr>
-                        <Td>Weight</Td>
-                        <Td>{pokeDex.weight}</Td>
-                     </Tr>
-                     <Tr>
-                        <Td>Height</Td>
-                        <Td>{pokeDex.height} ft.</Td>
-                     </Tr>
-                     <Tr>
-                        <Td>Base EXP</Td>
-                        <Td>{pokeDex.base_experience}</Td>
-                     </Tr>
                      <Tr>
                         <Td>Abilities</Td>
                         <Td>
@@ -114,6 +114,19 @@ export const Index = () => {
                               .join(", ")
                               .toUpperCase()}
                         </Td>
+                     </Tr>
+                     <Tr>
+                        <Td>Weight</Td>
+                        <Td>{pokeDex.weight} lbs.</Td>
+                     </Tr>
+                     <Tr>
+                        <Td>Height</Td>
+                        <Td>{pokeDex.height} ft.</Td>
+                     </Tr>
+
+                     <Tr>
+                        <Td>Base EXP</Td>
+                        <Td>{pokeDex.base_experience}</Td>
                      </Tr>
                   </Tbody>
                </Table>

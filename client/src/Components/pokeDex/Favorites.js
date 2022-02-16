@@ -22,11 +22,9 @@ export const Favorites = ({ name }) => {
    };
 
    return (
-      <div>
-         <Button width="100%" onClick={handleFavorite}>
-            Add to Favorite
-         </Button>
-      </div>
+      <Button variant="outline" width="100%" onClick={handleFavorite}>
+         Add to Favorite
+      </Button>
    );
 };
 
