@@ -6,6 +6,11 @@ require("dotenv").config();
 
 const axios = require("axios");
 
+const sendAllNames = () => {
+   const allNames = await pool.query(`SELECT * FROM ${process.env.TABLE_NAME}`);
+   res.send(allNames);
+};
+
 router.post("/", async (req, res) => {
    try {
       const newName = await pool.query(
@@ -19,10 +24,18 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
    try {
-      const allNames = await pool.query(
-         `SELECT * FROM ${process.env.TABLE_NAME}`
+      sendAllNames();
+   } catch (e) {
+      console.log(e);
+   }
+});
+
+router.delete("/", async (req, res) => {
+   try {
+      const deleteFavorite = await pool.query(
+         `DELETE FROM ${process.env.TABLE_NAME} WHERE favorites_id = $1`,
+         [req.query.id]
       );
-      res.send(allNames);
    } catch (e) {
       console.log(e);
    }
