@@ -51,7 +51,7 @@ const FavoritesList = () => {
          }
       };
       getPokeDexFavorites();
-   }, []);
+   }, [selectBtn]);
 
    return (
       <div>

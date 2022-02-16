@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Heading, List, ListItem } from "@chakra-ui/react";
+import { Heading, Input, List, ListItem } from "@chakra-ui/react";
 
 const Search = (props) => {
    const { offSet, setOffSet } = props;
    const [pokeList, setPokeList] = useState([]);
    const [pokemon, pickPokemon] = useState("");
-
    const choosePokemon = (e) => {
-      setOffSet(e.currentTarget.id);
+      setOffSet(parseInt(e.currentTarget.id));
    };
+
+   console.log(offSet);
 
    useEffect(() => {
       const searchPokeDex = async () => {
