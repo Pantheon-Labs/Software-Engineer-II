@@ -8,6 +8,8 @@ import {
    ListItem,
    IconButton,
    HStack,
+   Heading,
+   Center,
 } from "@chakra-ui/react";
 
 import { CloseButton } from "@chakra-ui/react";
@@ -49,13 +51,14 @@ const FavoritesList = () => {
       getPokeDexFavorites();
    }, []);
 
-   favoritesList.map((i) => {
-      console.log(i.name);
-   });
    return (
       <div>
-         <Box>
-            <h1>Favorites</h1>
+         <Box display="flex" flexDirection="column">
+            <Center>
+               <Heading as="h2" mt="4" size="xl">
+                  Favorites
+               </Heading>
+            </Center>
             <List>
                <OrderedList>
                   {favoritesList.map((i, key) => {
