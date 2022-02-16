@@ -9,4 +9,4 @@ const pool = new Pool({
    port: process.env.PORT,
 });
 
-module.exports.pool;
+module.exports = pool;
