@@ -23,7 +23,8 @@ import {
    VStack,
 } from "@chakra-ui/react";
 
-export const Index = () => {
+export const Index = (props) => {
+   const { offSet, setOffSet } = props;
    const [pokeDex, setPokeDex] = useState({
       image: null,
       name: "",
@@ -33,7 +34,6 @@ export const Index = () => {
       abilities: [],
       types: [],
    });
-   const [offSet, setOffSet] = useState(1);
 
    const handleOffSet = (e) => {
       setTimeout(() => {
@@ -80,14 +80,12 @@ export const Index = () => {
       };
       getPokeDex();
    }, [offSet]);
-   console.log("FORMS", pokeDex.forms);
+
    return (
       <div>
          <Box display="flex" flexDirection="column">
             <Center>
-               <Heading as="h2" mt="4" size="xl">
-                  {pokeDex.name.toUpperCase()}
-               </Heading>
+               <Heading>{pokeDex.name.toUpperCase()}</Heading>
             </Center>
             <AspectRatio maxW="100%" ratio={4 / 3}>
                <Image

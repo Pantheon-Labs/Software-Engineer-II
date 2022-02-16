@@ -10,6 +10,8 @@ import {
    HStack,
    Heading,
    Center,
+   Grid,
+   GridItem,
 } from "@chakra-ui/react";
 
 import { CloseButton } from "@chakra-ui/react";
@@ -55,21 +57,34 @@ const FavoritesList = () => {
       <div>
          <Box display="flex" flexDirection="column">
             <Center>
-               <Heading as="h2" mt="4" size="xl">
-                  Favorites
-               </Heading>
+               <Heading>Favorites</Heading>
             </Center>
-            <List>
+
+            <List overflowY="scroll" maxH="60vh">
                <OrderedList>
                   {favoritesList.map((i, key) => {
                      return (
                         <div key={key}>
                            <HStack>
-                              <ListItem>{i.name}</ListItem>
-                              <CloseButton
-                                 id={i.favorites_id}
-                                 onClick={(e) => selectBtn(e)}
-                              />
+                              <Grid
+                                 templateColumns="repeat(5, 1fr)"
+                                 width="100%"
+                                 bg="rgba(0, 0, 0, 0.2)"
+                                 mb="1"
+                                 display="flex"
+                                 justifyContent="space-between"
+                                 p="1"
+                              >
+                                 <GridItem colSpan={3} h="10">
+                                    {i.name}
+                                 </GridItem>
+                                 <GridItem colStart={4} colEnd={6} h="10">
+                                    <CloseButton
+                                       id={i.favorites_id}
+                                       onClick={(e) => selectBtn(e)}
+                                    />
+                                 </GridItem>
+                              </Grid>
                            </HStack>
                         </div>
                      );

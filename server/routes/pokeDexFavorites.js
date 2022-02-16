@@ -6,11 +6,6 @@ require("dotenv").config();
 
 const axios = require("axios");
 
-const sendAllNames = () => {
-   const allNames = await pool.query(`SELECT * FROM ${process.env.TABLE_NAME}`);
-   res.send(allNames);
-};
-
 router.post("/", async (req, res) => {
    try {
       const newName = await pool.query(
@@ -24,7 +19,10 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
    try {
-      sendAllNames();
+      const allNames = await pool.query(
+         `SELECT * FROM ${process.env.TABLE_NAME}`
+      );
+      res.send(allNames);
    } catch (e) {
       console.log(e);
    }
