@@ -12,10 +12,12 @@ import { Index as PokeDex } from "./Components/pokeDex/Index";
 import FavoritesList from "./Components/pokeDex/FavoritesList";
 import { Index as ChooseFacts } from "./Components/chooseFacts/Index";
 import Search from "./Components/pokeDex/Search";
+import Footer from "./Components/Footer/Footer";
 import { useState } from "react";
 
 function App() {
    const [offSet, setOffSet] = useState(1);
+   let addFavorite = false;
 
    return (
       <ChakraProvider>
@@ -36,7 +38,11 @@ function App() {
                      borderTopRadius="lg"
                      p="10"
                   >
-                     <PokeDex offSet={offSet} setOffSet={setOffSet} />
+                     <PokeDex
+                        offSet={offSet}
+                        setOffSet={setOffSet}
+                        addFavorite={addFavorite}
+                     />
                   </Box>
 
                   <Box
@@ -44,7 +50,7 @@ function App() {
                      borderTopRadius="lg"
                      p="10"
                   >
-                     <FavoritesList />
+                     <FavoritesList addFavorite={addFavorite} />
                   </Box>
                   <Box
                      bgColor="rgba(131, 142, 57, 0.14)"
@@ -57,6 +63,7 @@ function App() {
                {/* <ChooseFacts /> */}
             </Container>
          </Box>
+         <Footer />
       </ChakraProvider>
    );
 }

@@ -16,7 +16,8 @@ import {
 
 import { CloseButton } from "@chakra-ui/react";
 
-const FavoritesList = () => {
+const FavoritesList = (props) => {
+   const { addFavorite } = props;
    const [favoritesList, updateFavoritesList] = useState([]);
 
    const selectBtn = async (e) => {
@@ -51,7 +52,7 @@ const FavoritesList = () => {
          }
       };
       getPokeDexFavorites();
-   }, [selectBtn]);
+   }, [selectBtn, addFavorite]);
 
    return (
       <div>
