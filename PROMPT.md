@@ -19,7 +19,7 @@ We want to see your skills in action, including your ability to to use Git + Git
 1. [Fork this repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 1. Make something awesome! This is super open-ended because we want you to get creative. At a minimum, here's what we expect:
     - A `README` with good documentation so we know how to run your code
-    - Some sort of TypeScript React and/or Node app that touches on the requirements in the tech listed above (more details on our [job posting](https://angel.co/l/2wyRAn))
+    - Some sort of 👉 **TypeScript** 👈 React and/or Node app that touches on the requirements in the tech listed above (more details on our [job posting](https://angel.co/l/2wyRAn))
     - Utilization of at least one API ([here's a good list](https://github.com/public-apis/public-apis) of free APIs if you need a suggestion!)
     - **Creativity and passion!** We're _tired_ of looking at resumes... tell us something about you and/or why you want to work with us
     - Commit OFTEN... if we see a single commit with everything, we'll be weirded out 🤔
