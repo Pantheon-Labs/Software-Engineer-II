@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js dotenv/config server.js dotenv_config_path=.env"
+  },
   "dependencies": {
     "axios": "^0.26.0",
     "cors": "^2.8.5",

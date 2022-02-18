@@ -2,7 +2,6 @@ const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 const pool = require("../database");
-require("dotenv").config();
 
 const axios = require("axios");
 
