@@ -12,6 +12,11 @@ router.post("/", async (req, res) => {
          `INSERT INTO ${process.env.TABLE_NAME} (name) VALUES ($1)`,
          [req.query.name]
       );
+
+      const allNames = await pool.query(
+         `SELECT * FROM ${process.env.TABLE_NAME}`
+      );
+      res.send(allNames);
    } catch (e) {
       console.log(e);
    }
@@ -34,6 +39,11 @@ router.delete("/", async (req, res) => {
          `DELETE FROM ${process.env.TABLE_NAME} WHERE favorites_id = $1`,
          [req.query.id]
       );
+
+      const allNames = await pool.query(
+         `SELECT * FROM ${process.env.TABLE_NAME}`
+      );
+      res.send(allNames);
    } catch (e) {
       console.log(e);
    }

@@ -24,7 +24,7 @@ import {
 } from "@chakra-ui/react";
 
 export const Index = (props) => {
-   const { offSet, setOffSet, addFavorite } = props;
+   const { offSet, setOffSet, favoritesList, updateFavoritesList } = props;
    const [pokeDex, setPokeDex] = useState({
       image: null,
       name: "",
@@ -60,7 +60,6 @@ export const Index = (props) => {
                      abilities,
                      types,
                   } = response.data;
-                  console.log(response.data);
                   setPokeDex({
                      image: sprites.front_default,
                      name: name,
@@ -154,7 +153,11 @@ export const Index = (props) => {
                      Next
                   </Button>
                </ButtonGroup>
-               <Favorites name={pokeDex.name} addFavorite={addFavorite} />
+               <Favorites
+                  name={pokeDex.name}
+                  favoritesList={favoritesList}
+                  updateFavoritesList={updateFavoritesList}
+               />
             </VStack>
          </Box>
       </div>

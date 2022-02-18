@@ -17,8 +17,7 @@ import { useState } from "react";
 
 function App() {
    const [offSet, setOffSet] = useState(1);
-   let addFavorite = false;
-
+   const [favoritesList, updateFavoritesList] = useState([]);
    return (
       <ChakraProvider>
          <Box
@@ -41,7 +40,8 @@ function App() {
                      <PokeDex
                         offSet={offSet}
                         setOffSet={setOffSet}
-                        addFavorite={addFavorite}
+                        favoritesList={favoritesList}
+                        updateFavoritesList={updateFavoritesList}
                      />
                   </Box>
 
@@ -50,7 +50,10 @@ function App() {
                      borderTopRadius="lg"
                      p="10"
                   >
-                     <FavoritesList addFavorite={addFavorite} />
+                     <FavoritesList
+                        favoritesList={favoritesList}
+                        updateFavoritesList={updateFavoritesList}
+                     />
                   </Box>
                   <Box
                      bgColor="rgba(131, 142, 57, 0.14)"
