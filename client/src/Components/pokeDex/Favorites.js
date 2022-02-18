@@ -3,15 +3,14 @@ import axios from "axios";
 import { Button } from "@chakra-ui/react";
 
 export const Favorites = (props) => {
-   const { name, addFavorite } = props;
+   const { favoritesList, updateFavoritesList, name } = props;
    const handleFavorite = (e) => {
       const postPokiDexFavorite = async () => {
          try {
             const request = await axios
                .post(`http://localhost:4000/pokeDexFavorites?name=${name}`)
                .then((response) => {
-                  console.log(response);
-                  addFavorite = !addFavorite;
+                  updateFavoritesList(response.data.rows);
                })
                .catch((error) => {
                   console.log(error);

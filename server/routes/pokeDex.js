@@ -12,14 +12,16 @@ router.get("/", async (req, res) => {
                `https://pokeapi.co/api/v2/pokemon/${req.query.offset}`
             );
          } catch (e) {
-            console.log("RESPONSE", e);
+            res.status(404).send(
+               "Not able to fetch the next/previous pokemon."
+            );
          }
       };
 
       const pokeDex = await getPokeDexOffset();
       res.send(pokeDex.data);
    } catch (e) {
-      console.log(e);
+      res.status(404).send("Not found.");
    }
 });
 
@@ -31,14 +33,14 @@ router.get("/all", async (req, res) => {
                `https://pokeapi.co/api/v2/pokemon?limit=1000`
             );
          } catch (e) {
-            console.log("RESPONSE", e);
+            res.status(404).send("Not able to fetch all pokemon.");
          }
       };
 
       const pokeDex = await getPokeDexOffset();
       res.send(pokeDex.data);
    } catch (e) {
-      console.log(e);
+      res.status(404).send("GET request unavailable.");
    }
 });
 

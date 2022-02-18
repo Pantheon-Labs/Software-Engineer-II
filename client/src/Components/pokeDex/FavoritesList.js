@@ -17,8 +17,7 @@ import {
 import { CloseButton } from "@chakra-ui/react";
 
 const FavoritesList = (props) => {
-   const { addFavorite } = props;
-   const [favoritesList, updateFavoritesList] = useState([]);
+   const { favoritesList, updateFavoritesList } = props;
 
    const selectBtn = async (e) => {
       let id = e.currentTarget.id;
@@ -38,21 +37,19 @@ const FavoritesList = (props) => {
 
    useEffect(() => {
       const getPokeDexFavorites = async () => {
-         try {
-            const request = await axios
-               .get(`http://localhost:4000/pokeDexFavorites`)
-               .then((response) => {
+         const request = await axios
+            .get(`http://localhost:4000/pokeDexFavorites`)
+            .then(
+               (response) => {
                   updateFavoritesList(response.data.rows);
-               })
-               .catch((error) => {
+               },
+               (error) => {
                   console.log(error);
-               });
-         } catch (e) {
-            console.log(e);
-         }
+               }
+            );
       };
       getPokeDexFavorites();
-   }, [selectBtn, addFavorite]);
+   }, [updateFavoritesList]);
 
    return (
       <div>
