@@ -99,6 +99,7 @@ export const Index = (props) => {
                      mr="2"
                      mb="2"
                      variant={index % 2 ? "outline" : "solid"}
+                     key={index}
                   >
                      {i.type.name}
                   </Badge>

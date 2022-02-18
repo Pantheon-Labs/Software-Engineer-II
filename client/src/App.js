@@ -27,7 +27,6 @@ function App() {
                "linear(to-b, orange.100, purple.300)",
             ]}
             minH="100vh"
-            minV="100vw"
          >
             <Container maxW="container.xl">
                <Heading>Pokidex</Heading>

@@ -36,6 +36,7 @@ const Search = (props) => {
                <ListItem
                   p="2"
                   name={i.name}
+                  key={key}
                   id={key + 1}
                   _hover={{
                      background: "white",
