@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
 import { Button } from "@chakra-ui/react";
 
-export const Favorites = (props) => {
+interface FavoritesProps {
+   favoritesList: Array<String>,
+   updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
+   name: String
+}
+
+export const Favorites = (props: FavoritesProps) => {
    const { favoritesList, updateFavoritesList, name } = props;
-   const handleFavorite = (e) => {
+   const handleFavorite = (e: MouseEvent) => {
       const postPokiDexFavorite = async () => {
          try {
             const request = await axios
