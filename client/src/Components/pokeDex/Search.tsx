@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
 import { Heading, Input, List, ListItem } from "@chakra-ui/react";
 
-const Search = (props) => {
+interface SearchProps {
+   offSet: number,
+   setOffSet: React.Dispatch<React.SetStateAction<number>>,
+}
+
+interface IpokeList {
+   name: string
+ }
+
+const Search = (props: SearchProps) => {
    const { offSet, setOffSet } = props;
-   const [pokeList, setPokeList] = useState([]);
-   const [pokemon, pickPokemon] = useState("");
-   const choosePokemon = (e) => {
+   const [pokeList, setPokeList] = useState<IpokeList[]>([]);
+
+   const choosePokemon = (e: MouseEvent) => {
       setOffSet(parseInt(e.currentTarget.id));
    };
 
@@ -32,12 +41,11 @@ const Search = (props) => {
       <div>
          <Heading>Search</Heading>
          <List as="ol" styleType="decimal" overflowY="scroll" maxH="60vh">
-            {pokeList.map((i, key) => (
+            {pokeList.map((i, key: number) => (
                <ListItem
                   p="2"
-                  name={i.name}
                   key={key}
-                  id={key + 1}
+                  id={(key + 1).toString()}
                   _hover={{
                      background: "white",
                      color: "teal.500",

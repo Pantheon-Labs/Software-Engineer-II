@@ -23,14 +23,14 @@ import {
    VStack,
 } from "@chakra-ui/react";
 
-interface FavoritesListProps {
+interface IndexProps {
    favoritesList: Array<string>,
    updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
    offSet: number,
    setOffSet: React.Dispatch<React.SetStateAction<number>>,
 }
 
-export const Index = (props: FavoritesListProps) => {
+export const Index = (props: IndexProps) => {
    const { offSet, setOffSet, favoritesList, updateFavoritesList } = props;
    const [pokeDex, setPokeDex] = useState({
       image: null,
