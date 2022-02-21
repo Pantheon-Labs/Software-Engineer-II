@@ -9,6 +9,8 @@ import {
    SimpleGrid,
    Text,
 } from "@chakra-ui/react";
+
+
 import Maher_Halabi_Software from "../Files/Maher_Halabi_Software.pdf";
 
 function Footer() {

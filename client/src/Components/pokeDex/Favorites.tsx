@@ -3,9 +3,9 @@ import axios from "axios";
 import { Button } from "@chakra-ui/react";
 
 interface FavoritesProps {
-   favoritesList: Array<String>,
+   favoritesList: Array<string>,
    updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
-   name: String
+   name: string
 }
 
 export const Favorites = (props: FavoritesProps) => {

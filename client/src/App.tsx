@@ -10,7 +10,6 @@ import {
 
 import { Index as PokeDex } from "./Components/pokeDex/Index";
 import FavoritesList from "./Components/pokeDex/FavoritesList";
-import { Index as ChooseFacts } from "./Components/chooseFacts/Index";
 import Search from "./Components/pokeDex/Search";
 import Footer from "./Components/Footer/Footer";
 import { useState } from "react";
