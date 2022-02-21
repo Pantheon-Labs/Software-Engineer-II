@@ -4,10 +4,7 @@ import {FaSearch} from "react-icons/fa"
 import { Box } from "@chakra-ui/layout"
 
 const Hero = () => {
-
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
-
-
 
     return (
         <Box

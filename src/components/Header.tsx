@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { Box, Text, Button } from '@chakra-ui/react'
 import { Image } from "@chakra-ui/image";
-import logo from "../assets/logo (1).png"
+import logo from "../assets/logo.png"
 
 const Header = () => {
+
+    const nav = useNavigate()
+
+
     return (
         <Box
         h="80px"
@@ -17,11 +22,13 @@ const Header = () => {
             boxSize='60px'
             ml={5}
             cursor='pointer'
+            onClick={()=>{nav("/")}}
             ></Image>
 
             <Box>
                 <Button
                 mr={5}
+                onClick={()=>{nav("/signup")}}
                 >
                     <Text>Sign up</Text>
                 </Button>
@@ -29,6 +36,7 @@ const Header = () => {
 
                 <Button
                 mr={5}
+                onClick={()=>{nav("/login")}}
                 >
                     <Text>Log in</Text>
                 </Button>
