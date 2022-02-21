@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent  } from "react";
 import axios from "axios";
 import {
    Button,
@@ -16,11 +16,19 @@ import {
 
 import { CloseButton } from "@chakra-ui/react";
 
-const FavoritesList = (props) => {
+interface FavoritesListProps {
+   favoritesList: {
+      name: string, 
+      favorites_id: string
+   }[],
+   updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
+}
+
+const FavoritesList = (props: FavoritesListProps) => {
    const { favoritesList, updateFavoritesList } = props;
 
-   const selectBtn = async (e) => {
-      let id = e.currentTarget.id;
+   const selectBtn = async (e: MouseEvent) => {
+      let id = (e.currentTarget as HTMLInputElement).id
       try {
          const request = await axios
             .delete(`http://localhost:4000/pokeDexFavorites?id=${id}`)
@@ -79,7 +87,7 @@ const FavoritesList = (props) => {
                                  <GridItem colStart={4} colEnd={6} h="10">
                                     <CloseButton
                                        id={i.favorites_id}
-                                       onClick={(e) => selectBtn(e)}
+                                       onClick={(e: React.MouseEvent<HTMLInputElement>) => selectBtn(e)}
                                     />
                                  </GridItem>
                               </Grid>
