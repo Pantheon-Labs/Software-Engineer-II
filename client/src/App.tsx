@@ -1,6 +1,5 @@
 import {
    Box,
-   Center,
    ChakraProvider,
    Container,
    Heading,
@@ -61,7 +60,6 @@ function App() {
                      <Search offSet={offSet} setOffSet={setOffSet} />
                   </Box>
                </SimpleGrid>
-               {/* <ChooseFacts /> */}
             </Container>
          </Box>
          <Footer />

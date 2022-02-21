@@ -1,6 +1,6 @@
 import { useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
-import { Heading, Input, List, ListItem } from "@chakra-ui/react";
+import { Heading, List, ListItem } from "@chakra-ui/react";
 
 interface SearchProps {
    offSet: number,

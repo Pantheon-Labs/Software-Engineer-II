@@ -1,12 +1,9 @@
-import { useEffect, useState, MouseEvent  } from "react";
+import { useEffect, MouseEvent  } from "react";
 import axios from "axios";
 import {
-   Button,
    List,
    Box,
    OrderedList,
-   ListItem,
-   IconButton,
    HStack,
    Heading,
    Center,
@@ -30,7 +27,7 @@ const FavoritesList = (props: FavoritesListProps) => {
    const selectBtn = async (e: MouseEvent) => {
       let id = (e.currentTarget as HTMLInputElement).id
       try {
-         const request = await axios
+         await axios
             .delete(`http://localhost:4000/pokeDexFavorites?id=${id}`)
             .then((response) => {
                updateFavoritesList(response.data.rows);
@@ -45,7 +42,7 @@ const FavoritesList = (props: FavoritesListProps) => {
 
    useEffect(() => {
       const getPokeDexFavorites = async () => {
-         const request = await axios
+         await axios
             .get(`http://localhost:4000/pokeDexFavorites`)
             .then(
                (response) => {

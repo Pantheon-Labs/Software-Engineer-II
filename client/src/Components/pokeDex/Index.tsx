@@ -10,15 +10,10 @@ import {
    ButtonGroup,
    Center,
    Heading,
-   IconButton,
    Image,
    Table,
-   TableCaption,
-   Tbody,
    Td,
-   Tfoot,
-   Th,
-   Thead,
+   Tbody,
    Tr,
    VStack,
 } from "@chakra-ui/react";
@@ -74,7 +69,7 @@ export const Index = (props: IndexProps) => {
    useEffect(() => {
       const getPokeDex = async () => {
          try {
-            const request = await axios
+            return await axios
                .get(`http://localhost:4000/pokeDex?offset=${offSet}`)
                .then((response) => {
                   const {
@@ -182,7 +177,6 @@ export const Index = (props: IndexProps) => {
                </ButtonGroup>
                <Favorites
                   name={pokeDex.name}
-                  favoritesList={favoritesList}
                   updateFavoritesList={updateFavoritesList}
                />
             </VStack>
