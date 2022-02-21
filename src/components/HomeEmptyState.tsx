@@ -1,53 +1,203 @@
 import { Box } from "@chakra-ui/layout"
 
+import { useMediaQuery } from "@chakra-ui/media-query"
+
 const HomeEmptyState = () => {
-return (
-    <Box d="flex" bg="white" justifyContent="center">
+
+    const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
+
+    return (
+    <div
+        // height="100vw"
+        // width="80%"
+        // display="flex"
+        // flexWrap="wrap"
+        // flexDirection="row"
+        // alignContent="flex-start"
+        // margin="auto"
+
+        // style={{
+        //     columnCount: `${isLargerThan600 ? '1' : '6'}`,
+        //     columnGap:'0',
+        //     width:'90%'
+        // }}
+    >
         <Box
-            bg="lightgray"
-            height="600px"
-            width="15%"
-            mr='50px'
-            mt="50px"
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="400px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
             borderRadius="10px"
-        ></Box>
-        <Box
-            bg="lightgray"
-            height="600px"
-            width="15%"
-            mr='50px'
-            mt="50px"
-            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
         ></Box>
 
         <Box
-            bg="lightgray"
-            height="600px"
-            width="15%"
-            mr='50px'
-            mt="50px"
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="200px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
             borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
         ></Box>
 
         <Box
-            bg="lightgray"
-            height="600px"
-            width="15%"
-            mt="50px"
-            mr='50px'
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="500px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
             borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
         ></Box>
 
+<Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="400px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
 
         <Box
-            bg="lightgray"
-            height="600px"
-            width="15%"
-            mt="50px"
-            mr='50px'
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="200px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
             borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
         ></Box>
-    </Box>
+
+        <Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="500px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+<Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="400px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+        <Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="200px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+        <Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="500px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+    
+<Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="400px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+        <Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="200px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+        <Box
+            bgGradient='linear(to-tr, lightgray, whitesmoke)'
+            height="500px"
+            // width="23%"
+            // mr='30px'
+            // ml='30px'
+            mt="30px"
+            mb="15px"
+            borderRadius="10px"
+            d="inline-block"
+            width="90%"
+            verticalAlign="top"
+        ></Box>
+
+        
+
+
+
+
+
+    </div>
 )}
 
 
