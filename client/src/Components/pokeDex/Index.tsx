@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import Favorites from "./Favorites";
 import axios from "axios";
 
@@ -23,7 +23,14 @@ import {
    VStack,
 } from "@chakra-ui/react";
 
-export const Index = (props) => {
+interface FavoritesListProps {
+   favoritesList: Array<string>,
+   updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
+   offSet: number,
+   setOffSet: React.Dispatch<React.SetStateAction<number>>,
+}
+
+export const Index = (props: FavoritesListProps) => {
    const { offSet, setOffSet, favoritesList, updateFavoritesList } = props;
    const [pokeDex, setPokeDex] = useState({
       image: null,
@@ -35,11 +42,12 @@ export const Index = (props) => {
       types: [],
    });
 
-   const handleOffSet = (e) => {
+   const handleOffSet = (e: MouseEvent) => {
+      let btnName = (e.target as HTMLInputElement).name;
       setTimeout(() => {
-         if (e.target.name === "Next") {
+         if (btnName === "Next") {
             setOffSet(offSet + 1);
-         } else if (e.target.name === "Back" && offSet > 1) {
+         } else if (btnName === "Back" && offSet > 1) {
             setOffSet(offSet - 1);
          }
       }, 100);
@@ -140,7 +148,7 @@ export const Index = (props) => {
                      colorScheme="blue"
                      name="Back"
                      disabled={offSet > 1 ? false : true}
-                     onClick={(e) => handleOffSet(e)}
+                     onClick={(e: React.MouseEvent<HTMLInputElement>) => handleOffSet(e)}
                   >
                      Back
                   </Button>
@@ -149,7 +157,7 @@ export const Index = (props) => {
                      size="lg"
                      colorScheme="blue"
                      name="Next"
-                     onClick={(e) => handleOffSet(e)}
+                     onClick={(e: React.MouseEvent<HTMLInputElement>) => handleOffSet(e)}
                   >
                      Next
                   </Button>
