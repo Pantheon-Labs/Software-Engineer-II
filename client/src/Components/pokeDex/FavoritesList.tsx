@@ -21,7 +21,7 @@ interface FavoritesListProps {
       name: string, 
       favorites_id: string
    }[],
-   updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
+   updateFavoritesList: React.Dispatch<React.SetStateAction<any>>,
 }
 
 const FavoritesList = (props: FavoritesListProps) => {

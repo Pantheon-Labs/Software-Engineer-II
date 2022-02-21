@@ -25,7 +25,7 @@ import {
 
 interface IndexProps {
    favoritesList: Array<string>,
-   updateFavoritesList: React.Dispatch<React.SetStateAction<string>>,
+   updateFavoritesList: React.Dispatch<React.SetStateAction<any>>,
    offSet: number,
    setOffSet: React.Dispatch<React.SetStateAction<number>>,
 }
