@@ -30,9 +30,27 @@ interface IndexProps {
    setOffSet: React.Dispatch<React.SetStateAction<number>>,
 }
 
+interface IpokeDex {
+   image: null,
+   name: string, 
+   weight: number,
+   height: number,
+   base_experience: number,
+   abilities: {
+      ability: {
+         name: string
+      },
+   }[],
+   types: {
+      type: {
+         name: string
+      }
+   }[]
+}
+
 export const Index = (props: IndexProps) => {
    const { offSet, setOffSet, favoritesList, updateFavoritesList } = props;
-   const [pokeDex, setPokeDex] = useState({
+   const [pokeDex, setPokeDex] = useState<IpokeDex>({
       image: null,
       name: "",
       weight: 0,
