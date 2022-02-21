@@ -4,6 +4,7 @@ import HomeEmptyState from "../components/HomeEmptyState"
 import { Box, Text } from "@chakra-ui/layout"
 import { Image } from '@chakra-ui/react'
 import { useMediaQuery } from "@chakra-ui/media-query"
+import CreatePin from "../components/CreatePin"
 
 const Home = () => {
 
@@ -67,6 +68,7 @@ const Home = () => {
     return (
         <div style={{backgroundColor:"white"}}>
             <Hero />
+            <CreatePin />
             <div         
             style={{
             columnCount: `${isLargerThan600 ? '1' : '6'}`,
