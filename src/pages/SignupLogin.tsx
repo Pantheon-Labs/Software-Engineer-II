@@ -14,12 +14,10 @@ const Login: React.FC<Props> = ({signOrLog}) => {
         <Box
             bg="whitesmoke"
             h="100vh"
-            d="flex"
-            
+            pt="5%"
         >
             <SignLogForm signOrLog={signOrLog}/>
         </Box>
-
     )
 }
 

@@ -15,6 +15,7 @@ const Header = () => {
         d="flex"
         justifyContent="space-between"
         alignItems="center"
+        bg="white"
         >
             <Image 
             src={logo}
