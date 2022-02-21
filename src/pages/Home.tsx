@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { GlobalCtx } from "../App"
 import Hero from "../components/Hero"
 import HomeEmptyState from "../components/HomeEmptyState"
 import { Box, Text } from "@chakra-ui/layout"
@@ -7,11 +8,11 @@ import { useMediaQuery } from "@chakra-ui/media-query"
 import CreatePin from "../components/CreatePin"
 
 const Home = () => {
-
-
     const [pins, setPins] = useState<any>(null)
-
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
+
+    const {gState} = useContext(GlobalCtx)
+    const {username} = gState 
 
 
     const getPins = async () => {
@@ -68,6 +69,12 @@ const Home = () => {
     return (
         <div style={{backgroundColor:"white"}}>
             <Hero />
+            {username ? <Text 
+                ml={isLargerThan600 ? '5%' : '10%'}
+                fontSize={isLargerThan600 ? '2.5em' : '3em'}
+                mt={5}
+                mb={-5}
+            >Welcome, {username}!</Text> : null}
             <CreatePin />
             <div         
             style={{

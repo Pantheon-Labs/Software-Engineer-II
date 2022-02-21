@@ -1,8 +1,10 @@
 import { Box } from "@chakra-ui/layout"
 
-import { useState } from "react"
-
-import { Button, Text, useDisclosure } from '@chakra-ui/react'
+import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { GlobalCtx } from "../App"
+import { useMediaQuery } from "@chakra-ui/media-query"
+import { Button, Text, useDisclosure, Textarea } from '@chakra-ui/react'
 import {FaPlus} from "react-icons/fa"
 import {
     Modal,
@@ -25,6 +27,12 @@ import {
 
 const CreatePin = () => {
 
+    const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
+    const navigate = useNavigate()
+
+    const {gState} = useContext(GlobalCtx)
+    const {token, username, id} = gState
+
     interface CreateForm {
         title: string,
         description: string,
@@ -46,10 +54,23 @@ const CreatePin = () => {
 
     return(
         <>
-        <Button leftIcon={<FaPlus/>} size="lg" borderRadius="100px" bg="brand.100" color="white" ml={5} mt={10} transition=".3s all" onClick={onOpen}
+        <Button leftIcon={<FaPlus/>} 
+            size="lg" 
+            borderRadius="100px" 
+            bgGradient='linear(to-r, brand.100, brand.200)' 
+            color="white" ml={isLargerThan600 ? '5%' : '10%'} 
+            mt={5} 
+            transition=".3s all" 
+            onClick={()=>{
+                if (token) {
+                    onOpen()
+                } else {
+                    navigate("/signup")
+                }
+                }}
             _hover={{
                 transform:"scale(1.1)"
-            }}
+                }}
         >
             <Text>Create Pin</Text>
         </Button>
@@ -71,7 +92,7 @@ const CreatePin = () => {
 
                         <FormControl mb="20px">
                             <FormLabel htmlFor='description' >Description</FormLabel>
-                            <Input id='title' type='text' />
+                            <Input id='description' type='textarea' />
                             <FormHelperText>Write whatever you want to describe your pin.</FormHelperText>
                         </FormControl>
 
@@ -82,7 +103,15 @@ const CreatePin = () => {
                         </FormControl>
 
                         <FormControl ml="80%" mb="20px">
-                            <Button type="submit" bg="brand.100" color="white">Submit</Button>
+                            <Button 
+                                type="submit" 
+                                bgGradient='linear(to-r, brand.100, brand.200)'  
+                                color="white"
+                                _hover={{
+                                    bgGradient:'linear(to-r, brand.100, brand.200)',
+                                    transform: "scale(1.1)"  
+                                }}
+                            >Submit</Button>
                         </FormControl>
                     </form>
                 </ModalBody>
