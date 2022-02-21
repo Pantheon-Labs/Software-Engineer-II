@@ -7,24 +7,28 @@ const axios = require("axios");
 
 router.post("/", async (req, res) => {
    try {
+      if (!req.query.name) {
+         return res.status(400).send("Pokemon name is required.");
+      }
+
       const newName = await pool.query(
          `INSERT INTO favorites (name) VALUES ($1)`,
          [req.query.name]
       );
 
       const allNames = await pool.query(`SELECT * FROM favorites`);
-      res.send(allNames);
-   } catch (e) {
-      console.log(e);
+      res.status(200).send(allNames);
+   } catch (err) {
+      res.status(500).send(err);
    }
 });
 
 router.get("/", async (req, res) => {
    try {
       const allNames = await pool.query(`SELECT * FROM favorites`);
-      res.send(allNames);
-   } catch (e) {
-      console.log(e);
+      res.status(200).send(allNames);
+   } catch (err) {
+      res.status(500).send(err);
    }
 });
 
@@ -35,10 +39,14 @@ router.delete("/", async (req, res) => {
          [req.query.id]
       );
 
+      if (deleteFavorite.rowCount !== 1) {
+         return res.status(404).send("Unable to delete item.");
+      }
+
       const allNames = await pool.query(`SELECT * FROM favorites`);
-      res.send(allNames);
-   } catch (e) {
-      console.log(e);
+      res.status(200).send(allNames);
+   } catch (err) {
+      res.status(500).send(err);
    }
 });
 
