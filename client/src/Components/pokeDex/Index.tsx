@@ -68,36 +68,39 @@ export const Index = (props: IndexProps) => {
 
    useEffect(() => {
       const getPokeDex = async () => {
-         try {
-            return await axios
-               .get(`http://localhost:4000/pokeDex?offset=${offSet}`)
-               .then((response) => {
-                  const {
-                     name,
-                     weight,
-                     sprites,
-                     height,
-                     base_experience,
-                     abilities,
-                     types,
-                  } = response.data;
-                  setPokeDex({
-                     image: sprites.front_default,
-                     name: name,
-                     weight: weight,
-                     height: height,
-                     base_experience: base_experience,
-                     abilities: abilities,
-                     types: types,
-                  });
-               })
-               .catch((error) => {
-                  console.log(error);
+         try {await axios
+            .get(`http://localhost:4000/pokeDex?offset=${offSet}`)
+            .then((response) => {
+               const {
+                  name,
+                  weight,
+                  sprites,
+                  height,
+                  base_experience,
+                  abilities,
+                  types,
+               } = response.data;
+
+               setPokeDex({
+                  image: sprites.front_default,
+                  name: name,
+                  weight: weight,
+                  height: height,
+                  base_experience: base_experience,
+                  abilities: abilities,
+                  types: types,
                });
-         } catch (e) {
-            console.log(e);
+            })
+            .catch((e) => {
+               if (e.response.status === 500) {
+                  return alert(e.response.data);
+               }
+            });
+         } catch {
+            alert("Network disconnected: Unable to request the next/previous Pokemon.")
          }
-      };
+          
+      }
       getPokeDex();
    }, [offSet]);
 

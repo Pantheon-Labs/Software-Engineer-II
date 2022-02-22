@@ -27,16 +27,18 @@ const FavoritesList = (props: FavoritesListProps) => {
    const selectBtn = async (e: MouseEvent) => {
       let id = (e.currentTarget as HTMLInputElement).id
       try {
-         await axios
+         return await axios
             .delete(`http://localhost:4000/pokeDexFavorites?id=${id}`)
             .then((response) => {
                updateFavoritesList(response.data.rows);
             })
-            .catch((error) => {
-               console.log(error);
-            });
-      } catch (e) {
-         console.log(e);
+            .catch((e) => {
+               if (e.response.status === 500) {
+                  return alert(e.response.data);
+               }
+         });
+      } catch {
+         alert("Network disconnected: Unable to request Pokemon favorites.")
       }
    };
 

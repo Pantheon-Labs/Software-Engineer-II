@@ -13,22 +13,36 @@ router.get("/", async (req, res) => {
       };
 
       const pokeDex = await getPokeDexOffset();
-      res.status(200).send(pokeDex.data);
-   } catch (err) {
-      res.status(500).send(err);
+
+      if (pokeDex.status == 200) {
+         return res.status(200).send(pokeDex.data);
+      }
+   } catch {
+      return res
+         .status(500)
+         .send(
+            "Something went wrong with the request in fetching the next/previous Pokemon."
+         );
    }
 });
 
 router.get("/all", async (req, res) => {
    try {
-      const getPokeDexOffset = async () => {
+      const getPokemonCollection = async () => {
          return await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1000`);
       };
 
-      const pokeDex = await getPokeDexOffset();
-      res.status(200).send(pokeDex.data);
-   } catch (err) {
-      res.status(500).send(err);
+      const pokemonCollection = await getPokemonCollection();
+
+      if (pokemonCollection.status == 200) {
+         return res.status(200).send(pokemonCollection.data);
+      }
+   } catch {
+      return res
+         .status(500)
+         .send(
+            "Something went wrong with the request in fetching Pokemon list."
+         );
    }
 });
 

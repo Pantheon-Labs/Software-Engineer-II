@@ -21,19 +21,21 @@ const Search = (props: SearchProps) => {
 
    useEffect(() => {
       const searchPokeDex = async () => {
-         try {
-            const request = await axios
-               .get(`http://localhost:4000/pokeDex/all`)
-               .then((response) => {
-                  setPokeList(response.data.results);
-               })
-               .catch((error) => {
-                  console.log(error);
-               });
-         } catch (e) {
-            console.log(e);
+         try {return await axios
+            .get(`http://localhost:4000/pokeDex/all`)
+            .then((response) => {
+               setPokeList(response.data.results);
+            })
+            .catch((e) => {
+               if (e.response.status === 500) {
+                  return alert(e.response.data);
+               }
+            });
+         } catch {
+            alert("Network disconnected: Unable to request Pokemon list.")
          }
       };
+
       searchPokeDex();
    }, []);
 

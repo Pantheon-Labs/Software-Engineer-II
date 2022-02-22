@@ -8,22 +8,22 @@ interface FavoritesProps {
 
 export const Favorites = (props: FavoritesProps) => {
    const { updateFavoritesList, name } = props;
-   const handleFavorite = () => {
-      const postPokiDexFavorite = async () => {
-         try {
-            await axios
-               .post(`http://localhost:4000/pokeDexFavorites?name=${name}`)
-               .then((response) => {
-                  updateFavoritesList(response.data.rows);
-               })
-               .catch((error) => {
-                  console.log(error);
-               });
-         } catch (e) {
-            console.log(e);
-         }
-      };
-      postPokiDexFavorite();
+
+   const handleFavorite = async () => {
+      try {
+         await axios
+         .post(`http://localhost:4000/pokeDexFavorites?name=${name}`)
+         .then((response) => {
+            updateFavoritesList(response.data.rows);
+         })
+         .catch((e) => {
+            if (e.response.status === 500) {
+               return alert(e.response.data);
+            }
+         });
+      } catch {
+         alert("Network disconnected: Unable to request Pokemon favorites.")
+      }
    };
 
    return (
