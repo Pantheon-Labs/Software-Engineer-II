@@ -6,13 +6,15 @@ import { Box, Text } from "@chakra-ui/layout"
 import { Image } from '@chakra-ui/react'
 import { useMediaQuery } from "@chakra-ui/media-query"
 import CreatePin from "../components/CreatePin"
+import CreateCollection from "../components/CreateCollection"
+import { Link } from "react-router-dom"
 
 const Home = () => {
     const [pins, setPins] = useState<any>(null)
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
 
     const {gState} = useContext(GlobalCtx)
-    const {username} = gState 
+    const {username, token} = gState 
 
 
     const getPins = async () => {
@@ -27,7 +29,8 @@ const Home = () => {
 
     const showPins = () => {
         return pins.map((pin:any)=>{
-            return <Box w="100%" mr='50px' mt="50px" objectFit="cover">
+            return <Link to={`/pin/${pin.id}`}>
+            <Box w="100%" mr='50px' mt="50px" objectFit="cover">
                 <Box
                     height={pin.image.clientHeight}
                     mt="30px"
@@ -46,6 +49,7 @@ const Home = () => {
                     </Box>
                 </Box>
                 </Box>
+                </Link>
         })
     }
 
@@ -53,12 +57,7 @@ const Home = () => {
     return (
         <div style={{backgroundColor:"white"}}>
             <Hero />
-            {username ? <Text 
-                ml={isLargerThan600 ? '5%' : '10%'}
-                fontSize={isLargerThan600 ? '2.5em' : '3em'}
-                mt={5}
-                mb={-5}
-            >Welcome, {username}!</Text> : null}
+            {token ? <CreateCollection /> : null}
             <CreatePin getPins={getPins}/>
             <div         
             style={{

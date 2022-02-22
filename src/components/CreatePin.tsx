@@ -122,6 +122,11 @@ const CreatePin = ({getPins}:any) => {
         })
     }
 
+
+
+
+
+    
     return(
         <>
         <Button leftIcon={<FaPlus/>} 
