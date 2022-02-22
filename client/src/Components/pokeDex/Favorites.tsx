@@ -24,7 +24,6 @@ export const Favorites = (props: FavoritesProps) => {
          .catch((e) => {
             if (e.response.status === 500) {
                newToast({ title: "Request Error", description: e.response.data, status: "error"})
-               // return Toast("Request Error", e.response.status, "error")
             }
          });
       } catch {
@@ -35,14 +34,6 @@ export const Favorites = (props: FavoritesProps) => {
    return (
       <Button variant="outline" width="100%" onClick={() => {
          handleFavorite();
-         // Toast("Network Disconnection Error", "Unable to request Pokemon favorites.", "error")
-         // toasty({
-         //    title: "Account created.",
-         //    description: "We've created your account for you.",
-         //    status: "success",
-         //    duration: 9000,
-         //    isClosable: true,
-         // })
       }}>
          Add to Favorite
       </Button>

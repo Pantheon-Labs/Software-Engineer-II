@@ -52,11 +52,9 @@ const FavoritesList = (props: FavoritesListProps) => {
             .then(
                (response) => {
                   updateFavoritesList(response.data.rows);
-               },
-               (error) => {
-                  console.log(error);
-               }
-            );
+               }).catch(() => {
+                  newToast({ title: "Request Error", description: "Unable to update Pokemon favorites list.", status: "Error"})
+               });
       };
       getPokeDexFavorites();
    }, [updateFavoritesList]);

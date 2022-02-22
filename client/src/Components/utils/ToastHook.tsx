@@ -14,7 +14,7 @@ export const ToastHook = () => {
               title: title,
               description: description,
               status: status,
-              duration: 4000,
+              duration: 2000,
               isClosable: true
           })
       }
