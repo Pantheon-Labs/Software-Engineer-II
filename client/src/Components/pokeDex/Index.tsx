@@ -17,6 +17,8 @@ import {
    Tr,
    VStack,
 } from "@chakra-ui/react";
+import {ToastHook} from "../utils/ToastHook";
+
 
 interface IndexProps {
    favoritesList: Array<string>,
@@ -45,6 +47,8 @@ interface IpokeDex {
 
 export const Index = (props: IndexProps) => {
    const { offSet, setOffSet, favoritesList, updateFavoritesList } = props;
+   const [toast, newToast] = ToastHook();
+
    const [pokeDex, setPokeDex] = useState<IpokeDex>({
       image: null,
       name: "",
@@ -90,14 +94,16 @@ export const Index = (props: IndexProps) => {
                   abilities: abilities,
                   types: types,
                });
+
+               newToast({ title: "Success", description: "Pokemon information loaded", status: "success"})
             })
             .catch((e) => {
                if (e.response.status === 500) {
-                  return alert(e.response.data);
+                  newToast({ title: "Request Error", description: e.response.data, status: "error"})
                }
             });
          } catch {
-            alert("Network disconnected: Unable to request the next/previous Pokemon.")
+          newToast({ title: "Network Disconnected", description: "Unable to request next/previous Pokemon", status: "warning"})
          }
           
       }

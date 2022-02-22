@@ -10,6 +10,7 @@ import {
    Grid,
    GridItem,
 } from "@chakra-ui/react";
+import { ToastHook } from "../utils/ToastHook";
 
 import { CloseButton } from "@chakra-ui/react";
 
@@ -23,6 +24,7 @@ interface FavoritesListProps {
 
 const FavoritesList = (props: FavoritesListProps) => {
    const { favoritesList, updateFavoritesList } = props;
+   const [toast, newToast] = ToastHook();
 
    const selectBtn = async (e: MouseEvent) => {
       let id = (e.currentTarget as HTMLInputElement).id
@@ -31,14 +33,15 @@ const FavoritesList = (props: FavoritesListProps) => {
             .delete(`http://localhost:4000/pokeDexFavorites?id=${id}`)
             .then((response) => {
                updateFavoritesList(response.data.rows);
+               newToast({ title: "Success", description: "Pokemon deleted from favorites", status: "success"})
             })
             .catch((e) => {
                if (e.response.status === 500) {
-                  return alert(e.response.data);
+                  newToast({ title: "Request Error", description: e.response.data, status: "error"})
                }
          });
       } catch {
-         alert("Network disconnected: Unable to request Pokemon favorites.")
+         newToast({ title: "Network Disconnected", description: "Unable to delete Pokemon from favorites.", status: "warning"})
       }
    };
 

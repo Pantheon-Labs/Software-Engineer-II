@@ -1,6 +1,7 @@
 import { useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
 import { Heading, List, ListItem } from "@chakra-ui/react";
+import { ToastHook } from "../utils/ToastHook";
 
 interface SearchProps {
    offSet: number,
@@ -14,7 +15,8 @@ interface IpokeList {
 const Search = (props: SearchProps) => {
    const { offSet, setOffSet } = props;
    const [pokeList, setPokeList] = useState<IpokeList[]>([]);
-
+   const [toast, newToast] = ToastHook();
+   
    const choosePokemon = (e: MouseEvent) => {
       setOffSet(parseInt(e.currentTarget.id));
    };
@@ -25,14 +27,15 @@ const Search = (props: SearchProps) => {
             .get(`http://localhost:4000/pokeDex/all`)
             .then((response) => {
                setPokeList(response.data.results);
+               newToast({ title: "Success", description: "Fetched Pokemon list", status: "success"})
             })
             .catch((e) => {
                if (e.response.status === 500) {
-                  return alert(e.response.data);
+                  newToast({ title: "Request Error", description: e.response.data, status: "error"})
                }
             });
          } catch {
-            alert("Network disconnected: Unable to request Pokemon list.")
+            newToast({ title: "Network Disconnected", description: "Unable to request Pokemon list", status: "warning"})
          }
       };
 
