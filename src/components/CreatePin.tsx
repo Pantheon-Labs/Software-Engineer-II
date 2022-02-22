@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/layout"
-
-import { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { GlobalCtx } from "../App"
 import { useMediaQuery } from "@chakra-ui/media-query"
@@ -23,34 +22,61 @@ import {
     FormHelperText,
     Input
   } from '@chakra-ui/react'
+import { values } from "lodash"
+import { response } from "express"
 
-
-const CreatePin = () => {
+const CreatePin = ({getPins}:any) => {
 
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
     const navigate = useNavigate()
 
     const {gState} = useContext(GlobalCtx)
-    const {token, username, id} = gState
+    const {token, username, id, url, pfp} = gState
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    interface CreateForm {
-        title: string,
-        description: string,
-        image: string,
-        user_id: number,
-        user_username: string
-    }
-
-
-    const [createForm, setCreateForm] = useState<CreateForm>({
+    const [createForm, setCreateForm] = useState<any>({
         title: "",
         description: "",
         image: "",
         user_id: 0,
-        user_username: ""
+        user_username: "",
+        user_pfp: ""
     })
+    useEffect(()=> {
+        setCreateForm({
+            ...createForm,
+            title: "",
+            description: "",
+            image: "",
+            user_id: id,
+            user_username: username,
+            user_pfp: pfp
+        })
+    }, [token])
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const handleChange = (event:React.FormEvent<HTMLInputElement>) => {
+        const newForm = {...createForm}
+        newForm[event.currentTarget.name] = event.currentTarget.value
+        setCreateForm(newForm)
+    }
+
+    const handleSubmit = async (event:React.FormEvent) => {
+        event.preventDefault()
+        const {title, description, image, user_id, user_username, user_pfp} = createForm
+        await fetch(`${url}pins`, {
+            method:"post",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({title, description, image, user_id, user_username, user_pfp})
+        })
+        .then((res)=>{res.json()})
+        .then((data)=> {
+            getPins()
+            onClose()
+        })
+    }
 
     return(
         <>
@@ -83,23 +109,23 @@ const CreatePin = () => {
                 <ModalCloseButton />
                 <ModalBody>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <FormControl mb='20px'>
                             <FormLabel htmlFor='title'>Title</FormLabel>
-                            <Input id='title' type='text' />
+                            <Input id='title' type='text' name="title" value={createForm.title} onChange={handleChange}/>
                             <FormHelperText>Enter the title or name for your pin.</FormHelperText>
                         </FormControl>
 
                         <FormControl mb="20px">
                             <FormLabel htmlFor='description' >Description</FormLabel>
-                            <Input id='description' type='textarea' />
+                            <Input id='description' type='textarea' name="description" value={createForm.description} onChange={handleChange}/>
                             <FormHelperText>Write whatever you want to describe your pin.</FormHelperText>
                         </FormControl>
 
                         <FormControl mb="20px">
                             <FormLabel htmlFor='description'>Image</FormLabel>
-                            <Input id='image' type='file' accept="image/*" multiple={false}/>
-                            <FormHelperText>Upload a file for your pin's image.</FormHelperText>
+                            <Input id='image' type='text' placeholder="Image URL" name="image" value={createForm.image} onChange={handleChange}/>
+                            <FormHelperText>Paste an image url for your pin's image.</FormHelperText>
                         </FormControl>
 
                         <FormControl ml="80%" mb="20px">

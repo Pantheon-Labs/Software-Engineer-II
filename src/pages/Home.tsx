@@ -29,38 +29,22 @@ const Home = () => {
         return pins.map((pin:any)=>{
             return <Box w="100%" mr='50px' mt="50px" objectFit="cover">
                 <Box
-                    // bg="lightgray"
-                    // bgGradient='linear(to-tr, lightgray, whitesmoke)'
-                    // height={pin.image.clientHeight}
-                    // width="100%"
-                    // mt="30px"
-                    // mb="15px"
-                    // borderRadius="10px"
-                    // objectFit="cover"
-                    // key={pin.id}
-
-                    // bgGradient='linear(to-tr, lightgray, whitesmoke)'
                     height={pin.image.clientHeight}
-                    // width="23%"
-                    // mr='30px'
-                    // ml='30px'
                     mt="30px"
                     mb="15px"
                     borderRadius="10px"
                     d="inline-block"
                     width="90%"
                     verticalAlign="top"
+                    transition=".1s all"
+                    _hover={{transform:"scale(1.03)"}}
                 >
                     <Image src={pin.image} alt={pin.title} borderRadius="10px"/>
-                    {/* <Text>{pin.title}</Text> */}
-                    {/* <Text isTruncated>{pin.description}</Text> */}
-
                     <Box d="flex" mt="10px">
                         <Image src={pin.user_pfp} boxSize="30px" borderRadius="50px" mr="10px"/>
                         <Text>{pin.user_username}</Text>
                     </Box>
                 </Box>
-
                 </Box>
         })
     }
@@ -75,7 +59,7 @@ const Home = () => {
                 mt={5}
                 mb={-5}
             >Welcome, {username}!</Text> : null}
-            <CreatePin />
+            <CreatePin getPins={getPins}/>
             <div         
             style={{
             columnCount: `${isLargerThan600 ? '1' : '6'}`,
