@@ -13,17 +13,15 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
-  import {
+import {
     FormControl,
     FormLabel,
     FormErrorMessage,
     FormHelperText,
     Input
-  } from '@chakra-ui/react'
-import { values } from "lodash"
-import { response } from "express"
+} from '@chakra-ui/react'
 
 const CreatePin = ({getPins}:any) => {
 
@@ -42,6 +40,14 @@ const CreatePin = ({getPins}:any) => {
         user_username: "",
         user_pfp: ""
     })
+
+    const [hashtags, setHashtags] = useState<any>({
+        tag1: "",
+        tag2: "",
+        tag3: "",
+        tag4: ""
+    })
+
     useEffect(()=> {
         setCreateForm({
             ...createForm,
@@ -60,6 +66,12 @@ const CreatePin = ({getPins}:any) => {
         setCreateForm(newForm)
     }
 
+    const handleTagChange = (event:React.FormEvent<HTMLInputElement>) => {
+        const newForm = {...hashtags}
+        newForm[event.currentTarget.name] = event.currentTarget.value
+        setHashtags(newForm)
+    }
+
     const handleSubmit = async (event:React.FormEvent) => {
         event.preventDefault()
         const {title, description, image, user_id, user_username, user_pfp} = createForm
@@ -71,8 +83,40 @@ const CreatePin = ({getPins}:any) => {
             },
             body: JSON.stringify({title, description, image, user_id, user_username, user_pfp})
         })
-        .then((res)=>{res.json()})
+        .then(async (res)=>{
+            const data = await res.json()
+            const pin_id = data.id
+            for (const tag in hashtags) {
+                if (hashtags[tag] !== "") {
+                    fetch(`${url}hashtags`, {
+                        method:"post",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + token
+                        },
+                        body: JSON.stringify({tag:hashtags[tag], pin_id})
+                    })
+                    .then((res)=>{
+                        setHashtags({
+                            tag1: "",
+                            tag2: "",
+                            tag3: "",
+                            tag4: ""
+                        })
+                    })
+                }
+            }
+
+        })
         .then((data)=> {
+            setCreateForm({
+                title: "",
+                description: "",
+                image: "",
+                user_id: 0,
+                user_username: "",
+                user_pfp: ""
+            })
             getPins()
             onClose()
         })
@@ -113,7 +157,7 @@ const CreatePin = ({getPins}:any) => {
                         <FormControl mb='20px'>
                             <FormLabel htmlFor='title'>Title</FormLabel>
                             <Input id='title' type='text' name="title" value={createForm.title} onChange={handleChange}/>
-                            <FormHelperText>Enter the title or name for your pin.</FormHelperText>
+                            <FormHelperText>Come up with an interesting title for your pin.</FormHelperText>
                         </FormControl>
 
                         <FormControl mb="20px">
@@ -128,6 +172,17 @@ const CreatePin = ({getPins}:any) => {
                             <FormHelperText>Paste an image url for your pin's image.</FormHelperText>
                         </FormControl>
 
+                        <FormControl mb="20px">
+                            <FormLabel htmlFor="hashtags">Tags</FormLabel>
+                            <Box d="flex">
+                                <Input type="text" placeholder="#" name="tag1" value={hashtags.tag1} onChange={handleTagChange}/>
+                                <Input type="text" placeholder="#" name="tag2" value={hashtags.tag2} onChange={handleTagChange}/>
+                                <Input type="text" placeholder="#" name="tag3" value={hashtags.tag3} onChange={handleTagChange}/>
+                                <Input type="text" placeholder="#" name="tag4" value={hashtags.tag4} onChange={handleTagChange}/>
+                            </Box>
+                            <FormHelperText>Help people find your pins by adding tags.</FormHelperText>
+                        </FormControl>
+
                         <FormControl ml="80%" mb="20px">
                             <Button 
                                 type="submit" 
@@ -139,6 +194,7 @@ const CreatePin = ({getPins}:any) => {
                                 }}
                             >Submit</Button>
                         </FormControl>
+
                     </form>
                 </ModalBody>
             </ModalContent>
