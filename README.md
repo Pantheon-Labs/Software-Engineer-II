@@ -3,7 +3,7 @@
 ## Description
 Allows the user to scroll through Pokemon either one-by-one or selecting from a list in order to gather or remove favorites. The technologies used to achieve this were React for reusable components, Chakra-UI for styles, Node.js and Express.js to fetch and use APIs, and postgreSQL to store favorites inside a local database.
 
-https://user-images.githubusercontent.com/46462294/154218582-387e9800-6b5c-407e-93ba-0376d54ce027.mp4
+https://user-images.githubusercontent.com/46462294/155060579-6c832737-f80f-4812-9678-df78209c8ac8.mp4
 
 ## How to Install and Run the Project
 1. After cloning the project, delve into both _server_ and _client_ folders in order to `npm i` or `yarn install` to download the libraries.
