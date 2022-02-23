@@ -34,7 +34,7 @@ const AddToCollection = ({user_id, original_post_id}:any) => {
             original_post_id: original_post_id,
             collection_id: collection_id
         }
-        await fetch(`${url}savedpins/`, {
+        await fetch(`${url}savedpins`, {
             method: "post",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -88,9 +88,9 @@ const AddToCollection = ({user_id, original_post_id}:any) => {
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-
+                <Box d="flex">
                 {collections ? mapCollections() : null}
-
+                </Box>
             </ModalBody>
             <ModalFooter>
             <Button onClick={onClose}>Close</Button>

@@ -77,7 +77,7 @@ const ShowPin = () => {
                     </Box>
 
                     <Box mt="10%" w="100%" d="flex" justifyContent="center">
-                        <AddToCollection user_id={pin.user_id} original_post_id={pin.id}/>
+                        {token ? <AddToCollection user_id={pin.user_id} original_post_id={pin.id}/> : null}
                     </Box>
 
                     

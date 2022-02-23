@@ -46,7 +46,7 @@ const SignLogForm: React.FC<Props> = ({signOrLog}) => {
         .then((response)=> response.json())
         .then((data)=>{
             console.log(data)
-            setForm({...form, username:"", password: "", email:""})
+            setForm({...form, username:"", email:"", password: ""})
             if(data.token) {
                 window.localStorage.setItem("token", JSON.stringify(data))
                 setGstate({
@@ -101,7 +101,7 @@ const SignLogForm: React.FC<Props> = ({signOrLog}) => {
                     {signOrLog === "signup" ?
                         <FormControl mt={6}>
                         <FormLabel>Email</FormLabel>
-                        <Input type="email" placeholder="test@test.com" name="email" onChange={handleChange}/>
+                        <Input type="email" placeholder="test@test.com" name="email" value={form.email} onChange={handleChange}/>
                         </FormControl>  
                     : null}
 
@@ -109,7 +109,7 @@ const SignLogForm: React.FC<Props> = ({signOrLog}) => {
 
                     <FormControl mt={6}>
                     <FormLabel>Password</FormLabel>
-                    <Input type="password" placeholder="*******" name="password" onChange={handleChange}/>
+                    <Input type="password" placeholder="*******" name="password" value={form.password} onChange={handleChange}/>
                     </FormControl>
                     <FormControl>
                     <Input type="submit" width="full" mt={4} value={signOrLog === 'login' ? 'Log In' : 'Sign Up'} bg="brand.100" color="white" fontSize="1.1em"/>
