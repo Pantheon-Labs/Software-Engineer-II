@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Pin-It Screenshot](https://i.imgur.com/8e7MeYR.png)
 
 Pin-It is a web application in which users can let their imagination and passions run wild. Pin-it allows users to have full CRUD capabilities for their own personal pins and collections. Users can post their pins publicly and share them with others. Also, they are able to add any pins to collections that they've created.
 
@@ -50,6 +50,7 @@ Pin-It is a web application in which users can let their imagination and passion
 
 * [React.js](https://reactjs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+* [Chakra UI](https://chakra-ui.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -70,28 +71,46 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-
+3. Start the application
+   ```sh
+   npm start
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- USAGE EXAMPLES
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Creating Pins
+Below is an example of the modal that reveals upon creating a pin. 
+* ![Pin](https://i.imgur.com/Xjjm4ao.png)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Creating Collections
+Below is an example of the modal for creating collections. Collections will hold any pins you decide to save.
+* ![CollectionModal](https://i.imgur.com/SrVvIYd.png)
 
-<p align="right">(<a href="#top">back to top</a>)</p> -->
+### Search Function
+Below is an example of using the search function. Here, we are searching "pina co..." and we discover entries show below, live.
+* ![Search](https://i.imgur.com/rXVDSRr.png)
+
+### Pin Show Page
+Below is an example of the show page for one of the pins posted to the app. The app will check for whether or not this is your pin and allow you to edit or delete it!
+* ![ShowPin](https://i.imgur.com/Q5fT3jd.png)
+
+### Edit Modal
+Below is an example of the modal that allows you to edit the pins you created. This will look very similar to the edit modal for collections as well.
+* ![Edit](https://i.imgur.com/qLsm8pt.png)
+
+### Adding pins to a collection
+Below is an example of what happens when you decide to add a pin to a collection
+* ![Edit](https://i.imgur.com/hztKSCl.png)
 
 
-<!-- CONTACT -->
+
 ## Contact
 
 Kenny Nguyen - [LinkedIn](https://www.linkedin.com/in/kennydev/) - knguyen111601@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [GitHub](https://github.com/knguyen111601/Software-Engineer-II/tree/master)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
