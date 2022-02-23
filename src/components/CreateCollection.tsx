@@ -38,23 +38,21 @@ const CreateCollection = () => {
     const getCollections = async () => {
         const response = await fetch(`${url}collections/user/${id}`)
         const data = await response.json()
-        setCollections(data)
+        if (data.length > 0) {
+            setCollections(data)
+        }
     }
 
     useEffect(()=>{
         getCollections()
-    }, [token])
+    }, [])
 
     const [createForm, setCreateForm] = useState<any>({
         title: "",
         description: "",
-        user_id: 0,
-        user_username: "",
+        user_id: id,
+        user_username: username,
     })
-
-    useEffect(()=>{
-        setCreateForm({...createForm, user_id:id, user_username:username})
-    }, [])
 
     const handleChange = (event:React.FormEvent<HTMLInputElement>) => {
         const newForm = {...createForm}
@@ -74,11 +72,12 @@ const CreateCollection = () => {
         })
         .then(async (res)=> {
             getCollections()
-            setCollections({
+            setCreateForm({
+                ...createForm,
                 title: "",
                 description: "",
-                user_id: 0,
-                user_username: "",
+                user_id: id,
+                user_username: username,
             })
             onClose()
         })

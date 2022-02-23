@@ -6,7 +6,7 @@ import { GlobalCtx } from "../App"
 import CollectionItems from "../components/CollectionItems"
 import { useMediaQuery } from "@chakra-ui/media-query"
 import EditCollection from "../components/EditCollection"
-
+import DeleteCollection from "../components/DeleteCollection"
 const ShowCollection = () => {
 
     const collectionId = useParams().id
@@ -68,7 +68,10 @@ const ShowCollection = () => {
                     color="whitesmoke"
                     fontSize={isLargerThan600 ? "1em" : "1.5em"}
                 >{collection.description}</Text>
-                {collection.user_id && collection.user_id===id ? <EditCollection collectionId={collection.id} title={collection.title} description={collection.description}/> : null}
+                {collection.user_id && collection.user_id===id ? <Box>
+                        <EditCollection collectionId={collection.id} title={collection.title} description={collection.description}/>
+                        <DeleteCollection collectionId={collection.id} title={collection.title} description={collection.description}/>
+                    </Box> : null}
             </Box>
 
 
