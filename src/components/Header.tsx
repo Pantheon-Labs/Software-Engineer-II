@@ -1,16 +1,21 @@
-import React from "react";
 import { useNavigate } from "react-router";
 import { useContext, useState, useEffect } from "react";
 import { GlobalCtx } from "../App";
 import { Box, Text, Button } from '@chakra-ui/react'
 import { Image } from "@chakra-ui/image";
 import logo from "../assets/logo.png"
+import ProfileDrawer from "./ProfileDrawer";
+import { useDisclosure } from "@chakra-ui/react";
+import { useRef } from "react";
+
 
 const Header = () => {
-
     const nav = useNavigate()
     const {gState} = useContext(GlobalCtx)
     const {token, pfp, username} = gState
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef:any = useRef()
 
     return (
         <Box
@@ -31,7 +36,7 @@ const Header = () => {
 
             <Box>
 
-            {token ? <Image src={pfp} boxSize="40px" borderRadius="50px" mr={5}/> : 
+            {token ? <ProfileDrawer pfp={pfp} username={username}/> :   
                 <Box>                
                     <Button
                     mr={5}

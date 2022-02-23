@@ -4,21 +4,11 @@
 import { Box } from "@chakra-ui/layout";
 import Header from "./components/Header";
 import Main from "./pages/Main"
-import {createContext, useState} from "react"
+import {createContext, useState, useEffect} from "react"
 export const GlobalCtx = createContext<any>(null)
 
 function App() {
-
-  interface GlobalState {
-    url: string,
-    token: string | null,
-    username: string | null,
-    email: string | null,
-    pfp: string | null,
-    id: number | null
-  }
-
-  const [gState, setGstate] = useState<GlobalState | null>({
+  const [gState, setGstate] = useState<any>({
     url: "https://project-5-pin-backend.herokuapp.com/api/",
     token: null,
     username: null,
@@ -26,6 +16,23 @@ function App() {
     pfp: null,
     id: null
   })
+
+  useEffect(()=>{
+    if(window.localStorage.getItem("token")){
+    const token = JSON.parse(window.localStorage.getItem("token") || "{}")
+    console.log(token)
+    if(token) {
+      setGstate({
+        ...gState,
+        token: token.token,
+        username: token.username,
+        email: token.email,
+        pfp: token.pfp,
+        id: token.id
+      })
+    }
+  }
+  }, [])
 
   return (
     <GlobalCtx.Provider value={{gState, setGstate}}>

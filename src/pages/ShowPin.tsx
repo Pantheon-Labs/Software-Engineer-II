@@ -57,24 +57,32 @@ const ShowPin = () => {
         <Box border="2px solid transparent" h="100vh" >
         {pin ? 
         <Box  w="50%" m="auto" minWidth="800px">
+            
             <Box d="flex" justifyContent="space-between" alignItems="center" bg="white" m="auto" mt={20} borderRadius="20px" boxShadow="10px 10px 10px lightgray">
+                
                 <Box w="50%">
                     <Image src={pin.image} borderRadius="20px 0 0 20px" w="100%"/>
                 </Box>
+                
                 <Box w="50%" h="500px" d="flex" flexDir="column" alignItems="flex-start">
+                    
                     <Box d="flex" justifyContent="center" flexDir="column" ml={5} mb="20px">
                         <Text fontSize="3em" fontWeight="600">{pin.title}</Text>
                         <Text color="gray">{pin.description}</Text>
                     </Box>
+                    
                     <Box d="flex" alignItems="center" width="100px" justifyContent="space-between" ml={5}>
                         <Image src={pin.user_pfp} boxSize="50px" borderRadius="100px"/>
                         <Text>{pin.user_username}</Text>
                     </Box>
-                    {id && pin && id === pin.user_id ? <Box mt="50%" d="flex" w="100%" justifyContent="flex-end" pr={5}>
+                    
+                    {id && pin && id === pin.user_id ? <Box mt="60%" d="flex" w="100%" justifyContent="flex-end" pr={5}>
                         <EditComponent formState={formState} setFormState={setFormState} getPin={getPin}/>
                         <DeleteComponent />
                     </Box>: null}
+                
                 </Box>
+                
             </Box>
         </Box> 
         : <h1>Loading...</h1>}
