@@ -73,7 +73,7 @@ const ShowPin = () => {
                     
                     <Box d="flex" alignItems="center" width="100px" justifyContent="space-between" ml={5}>
                         <Image src={pin.user_pfp} boxSize="50px" borderRadius="100px"/>
-                        <Text>{pin.user_username}</Text>
+                        <Text ml={1}>{pin.user_username}</Text>
                     </Box>
                     
                     {id && pin && id === pin.user_id ? <Box mt="60%" d="flex" w="100%" justifyContent="flex-end" pr={5}>

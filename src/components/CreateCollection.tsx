@@ -170,7 +170,7 @@ const CreateCollection = () => {
                         <FormControl mb="20px">
                             <FormLabel htmlFor='description'>Description</FormLabel>
                             <Input id='description' type='textarea' name="description" value={createForm.description} onChange={handleChange}/>
-                            <FormHelperText>Write whatever you want to describe your pin.</FormHelperText>
+                            <FormHelperText>Write whatever you want to describe your collection.</FormHelperText>
                         </FormControl>
 
                         

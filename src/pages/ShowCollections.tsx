@@ -5,13 +5,13 @@ import { useParams } from "react-router"
 import { GlobalCtx } from "../App"
 import CollectionItems from "../components/CollectionItems"
 import { useMediaQuery } from "@chakra-ui/media-query"
-
+import EditCollection from "../components/EditCollection"
 
 const ShowCollection = () => {
 
     const collectionId = useParams().id
     const {gState} = useContext(GlobalCtx)
-    const {url} = gState
+    const {url,id} = gState
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
 
     const [collection, setCollection] = useState<any>(null)
@@ -68,8 +68,8 @@ const ShowCollection = () => {
                     color="whitesmoke"
                     fontSize={isLargerThan600 ? "1em" : "1.5em"}
                 >{collection.description}</Text>
+                {collection.user_id && collection.user_id===id ? <EditCollection collectionId={collection.id} title={collection.title} description={collection.description}/> : null}
             </Box>
-
 
 
         </Box> 
