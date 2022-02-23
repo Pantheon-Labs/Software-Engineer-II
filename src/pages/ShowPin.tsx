@@ -24,7 +24,7 @@ import { useParams } from "react-router"
 import { GlobalCtx } from "../App"
 import EditComponent from "../components/EditComponent"
 import DeleteComponent from "../components/DeleteComponent"
-
+import AddToCollection from "../components/AddToCollection"
 
 const ShowPin = () => {
     const pinID = useParams().id
@@ -75,6 +75,11 @@ const ShowPin = () => {
                         <Image src={pin.user_pfp} boxSize="50px" borderRadius="100px"/>
                         <Text ml={1}>{pin.user_username}</Text>
                     </Box>
+
+                    <Box mt="10%" w="100%" d="flex" justifyContent="center">
+                        <AddToCollection user_id={pin.user_id} original_post_id={pin.id}/>
+                    </Box>
+
                     
                     {id && pin && id === pin.user_id ? <Box mt="60%" d="flex" w="100%" justifyContent="flex-end" pr={5}>
                         <EditComponent formState={formState} setFormState={setFormState} getPin={getPin}/>

@@ -4,14 +4,15 @@ import { GlobalCtx } from "../App"
 import { Link } from "react-router-dom"
 import { Image } from "@chakra-ui/image"
 import { useMediaQuery } from "@chakra-ui/media-query"
-
+import { Button } from "@chakra-ui/button"
+import { useNavigate } from "react-router"
 
 const CollectionItems = ({collectionId}:any) => {
 
     const {gState} = useContext(GlobalCtx)
     const {user_id, user_pfp, username, id, token, url} = gState
     const [isLargerThan600] = useMediaQuery('(max-width: 600px)')
-
+    const navigate = useNavigate()
     const [items, setItems] = useState<any>(null)
 
     const getCollections = async () => {
@@ -27,6 +28,13 @@ const CollectionItems = ({collectionId}:any) => {
             getCollections()
         }
     }, [collectionId])
+
+    const removePin = async (pinId:number) => {
+        const response = await fetch(`${url}savedpins/${pinId}`, {
+            method: "delete"
+        })
+        navigate(`/collection/${collectionId}`)
+    }
 
     const itemMapper = () => {
         return items.map((pin:any)=> {
@@ -47,6 +55,15 @@ const CollectionItems = ({collectionId}:any) => {
                     <Box d="flex" mt="10px">
                         <Image src={pin.user_pfp} boxSize="30px" borderRadius="50px" mr="10px"/>
                         <Text>{pin.user_username}</Text>
+                        <Button 
+                            ml="30px" 
+                            fontSize="1em" 
+                            h="30px" 
+                            color="white"
+                            bgGradient='linear(to-l, brand.100, brand.200)' 
+                            _hover={{bgGradient:'linear(to-l, brand.100, brand.200)', transform:"scale(1.1)"}}
+                            onClick={()=>{removePin(pin.id)}}
+                        >Remove</Button>
                     </Box>
                 </Box>
                 </Box>
