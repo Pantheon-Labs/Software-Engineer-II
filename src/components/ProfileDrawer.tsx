@@ -14,15 +14,35 @@ import { Button } from '@chakra-ui/button'
 import { Image } from '@chakra-ui/image'
 import { Box } from '@chakra-ui/layout'
 import { useNavigate } from 'react-router'
+import { useContext } from 'react'
+import { GlobalCtx } from '../App'
 
 const ProfileDrawer = ({pfp, username}:any) => {
     const navigate = useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef:any = useRef()
 
+    const {gState, setGstate} = useContext(GlobalCtx)
+
     const navToProfilePage = () => {
         navigate("/profile")
         onClose()
+    }
+
+
+
+    const logout = () => {
+      window.localStorage.removeItem("token")
+      setGstate({
+        ...gState,
+        url: "https://project-5-pin-backend.herokuapp.com/api/",
+        token: null,
+        username: null,
+        email: null,
+        pfp: null,
+        id: null
+      })
+      navigate("/")
     }
 
     return (
@@ -51,7 +71,7 @@ const ProfileDrawer = ({pfp, username}:any) => {
               </DrawerBody> 
     
               <DrawerFooter>
-                <Button variant='outline' mr={3} onClick={onClose} bg="red.500" color="white">
+                <Button variant='outline' mr={3} onClick={logout} bg="red.500" color="white" _hover={{bg:"red.500", transform:"scale(1.1)"}}>
                   Logout
                 </Button>
               </DrawerFooter>
