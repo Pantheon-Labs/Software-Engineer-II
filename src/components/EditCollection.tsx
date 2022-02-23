@@ -63,7 +63,7 @@ const EditCollection = ({collectionId, title, description}:any) => {
 
     return (
         <>
-            <Button onClick={onOpen}>Edit</Button>
+            <Button onClick={onOpen} w="100px">Edit</Button>
 
             <Modal onClose={onClose} isOpen={isOpen} isCentered>
             <ModalOverlay />

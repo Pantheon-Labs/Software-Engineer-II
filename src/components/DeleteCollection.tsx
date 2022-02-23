@@ -41,7 +41,7 @@ const DeleteCollection = ({collectionId, title, description}:any) => {
 
     return (
         <>
-            <Button onClick={onOpen}>Delete</Button>
+            <Button onClick={onOpen} w="100px">Delete</Button>
 
             <Modal onClose={onClose} isOpen={isOpen} isCentered>
             <ModalOverlay />

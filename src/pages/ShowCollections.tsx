@@ -68,7 +68,7 @@ const ShowCollection = () => {
                     color="whitesmoke"
                     fontSize={isLargerThan600 ? "1em" : "1.5em"}
                 >{collection.description}</Text>
-                {collection.user_id && collection.user_id===id ? <Box>
+                {collection.user_id && collection.user_id===id ? <Box w="100%" d="flex" justifyContent="space-evenly">
                         <EditCollection collectionId={collection.id} title={collection.title} description={collection.description}/>
                         <DeleteCollection collectionId={collection.id} title={collection.title} description={collection.description}/>
                     </Box> : null}
