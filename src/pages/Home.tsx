@@ -56,7 +56,7 @@ const Home = () => {
 
     return (
         <div style={{backgroundColor:"white"}}>
-            <Hero />
+            <Hero setPins={setPins} getPins={getPins}/>
             {token ? <CreateCollection /> : null}
             <CreatePin getPins={getPins}/>
             <div         
