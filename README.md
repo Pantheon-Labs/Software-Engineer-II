@@ -6,7 +6,7 @@
     <br />
     <a href="https://github.com/knguyen111601/pantheon_labs_backend"><strong>Backend API I Made»</strong></a>
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://jovial-bhaskara-64e864.netlify.app/">View Demo</a>
   </p>
 </div>
 
