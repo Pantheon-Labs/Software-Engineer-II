@@ -4,6 +4,8 @@ import {FaSearch} from "react-icons/fa"
 import { Box } from "@chakra-ui/layout"
 import { useState, useEffect, useContext } from "react"
 import { GlobalCtx } from "../App"
+import { delay } from "lodash"
+
 
 
 const Hero = ({setPins, getPins}:any) => {
@@ -13,11 +15,10 @@ const Hero = ({setPins, getPins}:any) => {
     const {gState} = useContext(GlobalCtx)
     const {username, token, id, pfp, url} = gState 
 
-    const [term, setTerm] = useState<any>("")
+    const [term, setTerm] = useState<string>("")
 
     const handleChange = async (event:React.FormEvent<HTMLInputElement>) => {
         setTerm(event.currentTarget.value)
-        console.log({term:JSON.stringify(term)})
         if (term !== "") {
             fetch(`${url}pins/search`, {
                 method:"post",
@@ -29,7 +30,11 @@ const Hero = ({setPins, getPins}:any) => {
             })
             .then(async (res)=>{
                 const data = await res.json()
-                setPins(data)
+                if (data.length) {
+                    setPins(data)
+                } else {
+                    setPins([])
+                }
             })
         } 
     }
