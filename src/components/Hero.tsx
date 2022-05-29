@@ -15,11 +15,17 @@ const Hero = ({setPins, getPins}:any) => {
     const {gState} = useContext(GlobalCtx)
     const {username, token, id, pfp, url} = gState 
 
-    const [term, setTerm] = useState<string>("")
+    const [term, setTerm] = useState<any>("")
 
-    const handleChange = async (event:React.FormEvent<HTMLInputElement>) => {
+    const debounce = (ms:any) => new Promise (res => setTimeout(res, ms))
+
+    const handleChange = (event:React.FormEvent<HTMLInputElement>) => {
         setTerm(event.currentTarget.value)
+    }
+
+    const fetchTerm = async () => {
         if (term !== "") {
+            await debounce(300)
             fetch(`${url}pins/search`, {
                 method:"post",
                 headers: {
@@ -36,8 +42,12 @@ const Hero = ({setPins, getPins}:any) => {
                     setPins([])
                 }
             })
-        } 
+        }
     }
+
+    useEffect(()=>{
+        fetchTerm()
+    },[term])
 
     useEffect(()=>{
         if (term === "") {
